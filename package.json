@@ -1,6 +1,6 @@
 {
   "name": "paperforge",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Compose PDFs from Handlebars templates, a JSON recipe, and your data. Recipe-driven composition with per-template theming.",
   "type": "module",
   "main": "src/index.js",
