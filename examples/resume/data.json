@@ -1,0 +1,68 @@
+{
+  "name": "Alex Morgan",
+  "title": "Senior Software Engineer",
+  "contact": {
+    "email": "alex.morgan@example.com",
+    "phone": "+1 (415) 555-0142",
+    "location": "San Francisco, CA",
+    "website": "alexmorgan.dev"
+  },
+  "skills": [
+    "TypeScript / Node.js",
+    "React",
+    "PostgreSQL",
+    "AWS",
+    "Distributed systems",
+    "Mentoring"
+  ],
+  "languages": [
+    { "name": "English", "level": "Native" },
+    { "name": "Spanish", "level": "Fluent" },
+    { "name": "German", "level": "Intermediate" }
+  ],
+  "summary": "Pragmatic engineer with eight years of experience building developer-facing platforms. Comfortable owning a system end-to-end and equally happy shipping features, sharpening tooling, or mentoring teammates.",
+  "experience": [
+    {
+      "role": "Staff Engineer",
+      "company": "Foundry Labs",
+      "location": "San Francisco, CA",
+      "startDate": "2022-04-01",
+      "endDate": null,
+      "highlights": [
+        "Led the migration of the document pipeline to a recipe-driven template system, cutting onboarding time for new templates from days to hours.",
+        "Mentored four engineers through promotion to senior, with two now leading their own initiatives.",
+        "Designed and shipped a multi-tenant theming layer that powers white-label deployments for 12 enterprise customers."
+      ]
+    },
+    {
+      "role": "Senior Software Engineer",
+      "company": "Northwind Systems",
+      "location": "Berlin, Germany",
+      "startDate": "2019-09-01",
+      "endDate": "2022-03-01",
+      "highlights": [
+        "Owned the reporting subsystem serving 30M PDFs per year, holding p95 latency under 6 seconds.",
+        "Rewrote the asset pipeline to inline images as data URIs, removing an entire class of broken-render bugs."
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Bluewave",
+      "location": "Remote",
+      "startDate": "2017-06-01",
+      "endDate": "2019-08-01",
+      "highlights": [
+        "Built a real-time collaboration layer on top of Postgres logical replication.",
+        "Introduced contract tests between the API and three frontend clients."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.Sc. Computer Science",
+      "school": "TU Munich",
+      "location": "Munich, Germany",
+      "graduated": "2017-07-01"
+    }
+  ]
+}

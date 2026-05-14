@@ -1,0 +1,18 @@
+<section class="page">
+  <span class="label">Appendix</span>
+  <h2>Methodology &amp; sources</h2>
+
+  <h3>Methodology</h3>
+  <p>{{appendix.methodology}}</p>
+
+  <h3>Sources</h3>
+  <ol>
+    {{#each appendix.sources}}
+      <li><strong>{{title}}.</strong> {{citation}}</li>
+    {{/each}}
+  </ol>
+
+  <p style="margin-top: 48px; color: var(--muted); font-size: 9pt;">
+    Generated with paperforge · {{formatDate report.preparedAt "yyyy-MM-dd"}}
+  </p>
+</section>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{name}} — Résumé</title>
+    <style>
+      :root {
+        --primary: {{theme.primaryColor}};
+        --muted: {{theme.mutedColor}};
+        --text: {{theme.textColor}};
+        --sidebar-bg: {{theme.sidebarBg}};
+        --sidebar-text: {{theme.sidebarText}};
+      }
+      * { box-sizing: border-box; }
+      body {
+        font-family: {{theme.fontFamily}}, system-ui, sans-serif;
+        color: var(--text);
+        margin: 0;
+        font-size: 10.5pt;
+        line-height: 1.5;
+        display: grid;
+        grid-template-columns: 230px 1fr;
+        min-height: 100vh;
+      }
+      aside {
+        background: var(--sidebar-bg);
+        color: var(--sidebar-text);
+        padding: 40px 24px;
+      }
+      aside h1 {
+        font-size: 22pt;
+        margin: 0 0 4px;
+        color: var(--sidebar-text);
+        line-height: 1.1;
+      }
+      aside .title {
+        font-size: 10pt;
+        opacity: 0.85;
+        margin-bottom: 28px;
+      }
+      aside h2 {
+        font-size: 9pt;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-top: 24px;
+        margin-bottom: 8px;
+        opacity: 0.8;
+      }
+      aside ul { padding-left: 0; list-style: none; margin: 0; }
+      aside li { margin-bottom: 4px; font-size: 9.5pt; }
+      aside a { color: var(--sidebar-text); text-decoration: none; }
+      main { padding: 40px 44px; }
+      main h2 {
+        color: var(--primary);
+        font-size: 13pt;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-bottom: 2px solid var(--primary);
+        padding-bottom: 4px;
+        margin-top: 28px;
+      }
+      main h2:first-child { margin-top: 0; }
+      .role { margin-bottom: 18px; }
+      .role-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      .role-head strong { font-size: 11pt; }
+      .role-head .when { color: var(--muted); font-size: 9pt; }
+      .role .company { color: var(--muted); font-size: 10pt; margin-bottom: 4px; }
+      .role ul { margin: 4px 0 0; padding-left: 18px; }
+      .role li { margin-bottom: 2px; }
+    </style>
+  </head>
+  <body>
+    <aside>
+      <h1>{{name}}</h1>
+      <div class="title">{{title}}</div>
+
+      <h2>Contact</h2>
+      <ul>
+        <li>{{contact.email}}</li>
+        <li>{{contact.phone}}</li>
+        <li>{{contact.location}}</li>
+        {{#if contact.website}}<li>{{contact.website}}</li>{{/if}}
+      </ul>
+
+      <h2>Skills</h2>
+      <ul>
+        {{#each skills}}<li>{{this}}</li>{{/each}}
+      </ul>
+
+      {{#if languages}}
+        <h2>Languages</h2>
+        <ul>
+          {{#each languages}}<li>{{name}} — {{level}}</li>{{/each}}
+        </ul>
+      {{/if}}
+    </aside>
+
+    <main>
+      <h2>Summary</h2>
+      <p>{{summary}}</p>
+
+      <h2>Experience</h2>
+      {{#each experience}}
+        <div class="role">
+          <div class="role-head">
+            <strong>{{role}}</strong>
+            <span class="when">
+              {{formatDate startDate "MMM yyyy"}} – {{#if endDate}}{{formatDate endDate "MMM yyyy"}}{{else}}Present{{/if}}
+            </span>
+          </div>
+          <div class="company">{{company}} · {{location}}</div>
+          <ul>
+            {{#each highlights}}<li>{{this}}</li>{{/each}}
+          </ul>
+        </div>
+      {{/each}}
+
+      <h2>Education</h2>
+      {{#each education}}
+        <div class="role">
+          <div class="role-head">
+            <strong>{{degree}}</strong>
+            <span class="when">{{formatDate graduated "yyyy"}}</span>
+          </div>
+          <div class="company">{{school}} · {{location}}</div>
+        </div>
+      {{/each}}
+    </main>
+  </body>
+</html>

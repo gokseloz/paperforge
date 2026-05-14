@@ -1,0 +1,48 @@
+{
+  "report": {
+    "title": "Q1 Innovation Portfolio Review",
+    "subtitle": "How our pilots tracked against the 2026 strategy and where to double down next quarter.",
+    "client": "Aurora Robotics",
+    "period": "Q1 2026",
+    "author": "Strategy Office",
+    "preparedAt": "2026-04-05"
+  },
+  "summary": {
+    "headline": "Three of our four flagship pilots cleared the buy-stage gate this quarter, with the warehouse robotics initiative emerging as the strongest near-term adoption candidate.",
+    "kpis": [
+      { "label": "Active pilots", "value": "12" },
+      { "label": "Pilots → adopt", "value": "3" },
+      { "label": "Avg. cycle (days)", "value": "84" }
+    ],
+    "takeaways": [
+      "Warehouse robotics pilot exceeded throughput targets by 18%.",
+      "Two assessment-stage pilots were paused pending procurement clarification.",
+      "Pipeline diversity improved across logistics, energy, and quality assurance."
+    ]
+  },
+  "body": {
+    "sections": [
+      {
+        "title": "Strategic alignment",
+        "body": "Pilots launched this quarter mapped cleanly to the three priority themes set in the 2026 strategy refresh. Coverage gaps remain in sustainability tooling, which the next sourcing wave will target."
+      },
+      {
+        "title": "Operational health",
+        "body": "Cycle time from discover to buy improved from 112 to 84 days quarter-over-quarter as the standardized intake template rolled out across all business units."
+      }
+    ],
+    "pipeline": [
+      { "name": "Warehouse picking robotics", "owner": "Logistics BU", "stage": "adopt", "updatedAt": "2026-03-28" },
+      { "name": "Predictive maintenance vision", "owner": "Manufacturing BU", "stage": "pilot", "updatedAt": "2026-03-22" },
+      { "name": "Battery cell QA inspection", "owner": "Quality BU", "stage": "buy", "updatedAt": "2026-03-19" },
+      { "name": "Energy load forecasting", "owner": "Facilities BU", "stage": "assess", "updatedAt": "2026-03-11" }
+    ]
+  },
+  "appendix": {
+    "methodology": "Pilot data was aggregated from the central innovation tracker and validated with each business unit lead. Cycle-time figures reflect the median across closed pilots in the quarter.",
+    "sources": [
+      { "title": "Innovation tracker export", "citation": "Internal data warehouse, snapshot 2026-04-01." },
+      { "title": "Business unit interviews", "citation": "Conducted between 2026-03-25 and 2026-04-02." }
+    ]
+  }
+}

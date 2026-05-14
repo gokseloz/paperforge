@@ -1,0 +1,12 @@
+node_modules/
+out/
+*.pdf
+.DS_Store
+.env
+.env.local
+*.log
+npm-debug.log*
+.vscode/
+.idea/
+coverage/
+.nyc_output/

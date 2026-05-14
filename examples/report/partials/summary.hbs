@@ -1,0 +1,22 @@
+<section class="page">
+  <span class="label">Executive Summary</span>
+  <h2>At a glance</h2>
+
+  <p>{{summary.headline}}</p>
+
+  <div class="kpi-grid">
+    {{#each summary.kpis}}
+      <div class="kpi">
+        <div class="value">{{value}}</div>
+        <span class="label">{{label}}</span>
+      </div>
+    {{/each}}
+  </div>
+
+  <h3>Key takeaways</h3>
+  <ul>
+    {{#each summary.takeaways}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
+</section>

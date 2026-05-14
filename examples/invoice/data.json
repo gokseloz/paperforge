@@ -1,0 +1,43 @@
+{
+  "invoice": {
+    "number": "2026-0042",
+    "issueDate": "2026-03-15",
+    "dueDate": "2026-04-14",
+    "currency": "EUR",
+    "subtotal": 4800,
+    "taxRate": 19,
+    "tax": 912,
+    "total": 5712,
+    "netDays": 30
+  },
+  "from": {
+    "name": "Forge Studios GmbH",
+    "address": "Maximilianstr. 42, 80539 Munich, Germany",
+    "email": "billing@forgestudios.example"
+  },
+  "to": {
+    "name": "Aurora Robotics Inc.",
+    "address": "1 Innovation Way, Palo Alto, CA 94304, USA",
+    "email": "ap@aurora-robotics.example"
+  },
+  "items": [
+    {
+      "description": "Discovery workshop facilitation",
+      "quantity": 2,
+      "unitPrice": 1200,
+      "total": 2400
+    },
+    {
+      "description": "Prototype architecture review",
+      "quantity": 1,
+      "unitPrice": 1800,
+      "total": 1800
+    },
+    {
+      "description": "Stakeholder readout deck",
+      "quantity": 1,
+      "unitPrice": 600,
+      "total": 600
+    }
+  ]
+}

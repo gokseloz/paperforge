@@ -1,0 +1,31 @@
+<section class="page">
+  <span class="label">Findings</span>
+  <h2>Detailed analysis</h2>
+
+  {{#each body.sections}}
+    <h3>{{title}}</h3>
+    <p>{{body}}</p>
+  {{/each}}
+
+  <h3>Pipeline status</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Initiative</th>
+        <th>Owner</th>
+        <th>Stage</th>
+        <th>Updated</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each body.pipeline}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{owner}}</td>
+          <td>{{capitalize stage}}</td>
+          <td>{{formatDate updatedAt "MMM d, yyyy"}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</section>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{report.title}}</title>
+    <style>
+      :root {
+        --primary: {{theme.primaryColor}};
+        --accent: {{theme.accentColor}};
+        --muted: {{theme.mutedColor}};
+        --text: {{theme.textColor}};
+      }
+      * { box-sizing: border-box; }
+      body {
+        font-family: {{theme.fontFamily}}, system-ui, sans-serif;
+        color: var(--text);
+        margin: 0;
+        font-size: 11pt;
+        line-height: 1.55;
+      }
+      section.page {
+        padding: 56px 64px;
+        page-break-after: always;
+      }
+      section.page:last-child { page-break-after: auto; }
+      h1, h2, h3 { color: var(--primary); margin-top: 0; }
+      h1 { font-size: 32pt; letter-spacing: -0.5px; }
+      h2 {
+        font-size: 18pt;
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 6px;
+        margin-top: 0;
+      }
+      h3 { font-size: 13pt; }
+      .label {
+        font-size: 9pt;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--muted);
+      }
+      table { width: 100%; border-collapse: collapse; }
+      th, td {
+        text-align: left;
+        padding: 8px 10px;
+        border-bottom: 1px solid #eee;
+        font-size: 10pt;
+      }
+      th {
+        background: var(--accent);
+        color: white;
+        font-size: 9pt;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin: 24px 0;
+      }
+      .kpi {
+        background: #f7f9fc;
+        border-left: 4px solid var(--primary);
+        padding: 16px;
+      }
+      .kpi .value {
+        font-size: 24pt;
+        font-weight: 600;
+        color: var(--primary);
+        line-height: 1.1;
+      }
+      .kpi .label { display: block; margin-top: 4px; }
+    </style>
+  </head>
+  <body>
+    {{> sections}}
+  </body>
+</html>

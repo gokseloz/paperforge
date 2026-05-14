@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Invoice {{invoice.number}}</title>
+    <style>
+      :root {
+        --primary: {{theme.primaryColor}};
+        --muted: {{theme.mutedColor}};
+        --text: {{theme.textColor}};
+      }
+      * { box-sizing: border-box; }
+      body {
+        font-family: {{theme.fontFamily}}, system-ui, sans-serif;
+        color: var(--text);
+        margin: 0;
+        padding: 40px 48px;
+        font-size: 12pt;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        border-bottom: 3px solid var(--primary);
+        padding-bottom: 16px;
+        margin-bottom: 32px;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 32pt;
+        color: var(--primary);
+        letter-spacing: 1px;
+      }
+      .meta {
+        text-align: right;
+        color: var(--muted);
+        font-size: 10pt;
+        line-height: 1.6;
+      }
+      .meta strong { color: var(--text); }
+      .parties {
+        display: flex;
+        gap: 48px;
+        margin-bottom: 32px;
+      }
+      .parties section { flex: 1; }
+      .parties h2 {
+        font-size: 9pt;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--muted);
+        margin: 0 0 6px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 24px;
+      }
+      th {
+        text-align: left;
+        font-size: 9pt;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--muted);
+        border-bottom: 1px solid #ddd;
+        padding: 8px 4px;
+      }
+      td {
+        padding: 12px 4px;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      td.amount, th.amount { text-align: right; }
+      .totals {
+        margin-left: auto;
+        width: 280px;
+      }
+      .totals .row {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 4px;
+      }
+      .totals .row.grand {
+        border-top: 2px solid var(--primary);
+        margin-top: 8px;
+        font-weight: 600;
+        font-size: 14pt;
+        color: var(--primary);
+      }
+      footer {
+        margin-top: 48px;
+        padding-top: 16px;
+        border-top: 1px solid #eee;
+        color: var(--muted);
+        font-size: 9pt;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>INVOICE</h1>
+      <div class="meta">
+        <div><strong>#{{invoice.number}}</strong></div>
+        <div>Issued {{formatDate invoice.issueDate "MMM d, yyyy"}}</div>
+        <div>Due {{formatDate invoice.dueDate "MMM d, yyyy"}}</div>
+      </div>
+    </header>
+
+    <div class="parties">
+      <section>
+        <h2>From</h2>
+        <strong>{{from.name}}</strong><br />
+        {{from.address}}<br />
+        {{from.email}}
+      </section>
+      <section>
+        <h2>Billed to</h2>
+        <strong>{{to.name}}</strong><br />
+        {{to.address}}<br />
+        {{to.email}}
+      </section>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th class="amount">Qty</th>
+          <th class="amount">Unit</th>
+          <th class="amount">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each items}}
+          <tr>
+            <td>{{description}}</td>
+            <td class="amount">{{quantity}}</td>
+            <td class="amount">{{currency unitPrice ../invoice.currency}}</td>
+            <td class="amount">{{currency total ../invoice.currency}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <div class="totals">
+      <div class="row">
+        <span>Subtotal</span>
+        <span>{{currency invoice.subtotal invoice.currency}}</span>
+      </div>
+      <div class="row">
+        <span>Tax ({{invoice.taxRate}}%)</span>
+        <span>{{currency invoice.tax invoice.currency}}</span>
+      </div>
+      <div class="row grand">
+        <span>Total</span>
+        <span>{{currency invoice.total invoice.currency}}</span>
+      </div>
+    </div>
+
+    <footer>
+      Thank you for your business. Payment due within {{invoice.netDays}} days.
+    </footer>
+  </body>
+</html>
