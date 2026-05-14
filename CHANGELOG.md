@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-05-14
+
+### Changed
+
+- Verify automated release pipeline end-to-end via GitHub Actions + npm token.
+
 ## [0.1.1] - 2026-05-14
 
 ### Changed
@@ -26,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Three working examples: `invoice` (no recipe), `report` (recipe + partials), `resume` (theme-heavy).
 - CI workflow that renders all examples on every push.
 
-[Unreleased]: https://github.com/gokseloz/paperforge/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/gokseloz/paperforge/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/gokseloz/paperforge/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/gokseloz/paperforge/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/gokseloz/paperforge/releases/tag/v0.1.0
