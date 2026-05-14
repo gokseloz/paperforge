@@ -1,6 +1,6 @@
 {
   "name": "paperforge",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Compose PDFs from Handlebars templates, a JSON recipe, and your data. Recipe-driven composition with per-template theming.",
   "type": "module",
   "main": "src/index.js",
@@ -16,7 +16,9 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "node scripts/smoke-test.js",
+    "test": "node --test \"test/**/*.test.js\" && node scripts/smoke-test.js",
+    "test:unit": "node --test \"test/**/*.test.js\"",
+    "test:smoke": "node scripts/smoke-test.js",
     "example:invoice": "node src/cli.js --templates examples/invoice --data examples/invoice/data.json --out out/invoice.pdf",
     "example:report": "node src/cli.js --templates examples/report --data examples/report/data.json --out out/report.pdf",
     "example:resume": "node src/cli.js --templates examples/resume --data examples/resume/data.json --out out/resume.pdf"

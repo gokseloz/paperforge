@@ -91,15 +91,54 @@ cat data.json | paperforge --templates ./examples/invoice --out invoice.pdf
 
 ## Built-in Handlebars helpers
 
-| Helper       | Example                                       |
-| ------------ | --------------------------------------------- |
-| `eq`         | `{{#eq stage "adopt"}}...{{/eq}}`             |
-| `formatDate` | `{{formatDate dueDate "MMM d, yyyy"}}`        |
-| `currency`   | `{{currency total "EUR"}}`                    |
-| `json`       | `{{json someObject}}` (debug)                 |
-| `lowercase`  | `{{lowercase name}}`                          |
-| `uppercase`  | `{{uppercase code}}`                          |
-| `capitalize` | `{{capitalize status}}`                       |
+**Comparison** (block helpers, support `{{else}}`):
+
+| Helper | Example                                      |
+| ------ | -------------------------------------------- |
+| `eq`   | `{{#eq stage "adopt"}}…{{/eq}}`              |
+| `ne`   | `{{#ne status "draft"}}…{{/ne}}`             |
+| `gt`   | `{{#gt balance 0}}Pay now{{/gt}}`            |
+| `gte`  | `{{#gte score 80}}Passed{{/gte}}`            |
+| `lt`   | `{{#lt stock 5}}Low stock{{/lt}}`            |
+| `lte`  | `{{#lte age 17}}Minor{{/lte}}`               |
+
+**Boolean composition** (block helpers):
+
+| Helper | Example                                                   |
+| ------ | --------------------------------------------------------- |
+| `and`  | `{{#and isPaid hasReceipt}}…{{/and}}`                     |
+| `or`   | `{{#or isVip isFirstOrder}}…{{/or}}`                      |
+| `not`  | `{{#not isCancelled}}…{{/not}}`                           |
+
+**Math** (inline helpers — work great inside `{{#each}}`):
+
+| Helper | Example                          | Result |
+| ------ | -------------------------------- | ------ |
+| `add`  | `{{add 2 3}}`                    | `5`    |
+| `sub`  | `{{sub 10 4}}`                   | `6`    |
+| `mul`  | `{{mul qty price}}`              | line total |
+| `div`  | `{{div total count}}`            | average (returns `0` on divide-by-zero) |
+| `sum`  | `{{sum items "lineTotal"}}` or `{{sum items "qty" "price"}}` | invoice subtotal |
+
+**Formatting**:
+
+| Helper       | Example                                     | Result        |
+| ------------ | ------------------------------------------- | ------------- |
+| `formatDate` | `{{formatDate dueDate "MMM d, yyyy"}}`      | `May 14, 2026` |
+| `currency`   | `{{currency total "EUR"}}`                  | `€1,234.50`   |
+| `number`     | `{{number 1234.567 2}}`                     | `1,234.57`    |
+| `percent`    | `{{percent 0.19}}`                          | `19%`         |
+
+**String / fallback**:
+
+| Helper       | Example                                  |
+| ------------ | ---------------------------------------- |
+| `default`    | `{{default phone "N/A"}}`                |
+| `truncate`   | `{{truncate description 80}}`            |
+| `lowercase`  | `{{lowercase name}}`                     |
+| `uppercase`  | `{{uppercase code}}`                     |
+| `capitalize` | `{{capitalize status}}`                  |
+| `json`       | `{{json someObject}}` (debug)            |
 
 Register your own:
 

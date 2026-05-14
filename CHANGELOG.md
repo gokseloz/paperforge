@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-14
+
+### Added
+
+- Comparison helpers: `ne`, `gt`, `gte`, `lt`, `lte` (block).
+- Boolean composition helpers: `and`, `or`, `not` (block).
+- Math helpers: `add`, `sub`, `mul`, `div`, `sum` (`sum` supports key and key-pair forms for line totals).
+- Formatting helpers: `number` (thousand separators, fixed digits) and `percent`.
+- Fallback / string helpers: `default` and `truncate` (ellipsis-safe).
+- Unit tests for every built-in helper using `node:test` (no test dependencies added).
+- `npm run test:unit` and `npm run test:smoke` scripts; `npm test` now runs both.
+
 ## [0.1.4] - 2026-05-14
 
 ### Changed
@@ -44,7 +56,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Three working examples: `invoice` (no recipe), `report` (recipe + partials), `resume` (theme-heavy).
 - CI workflow that renders all examples on every push.
 
-[Unreleased]: https://github.com/gokseloz/paperforge/compare/v0.1.4...HEAD
+[Unreleased]: https://github.com/gokseloz/paperforge/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/gokseloz/paperforge/compare/v0.1.4...v0.2.0
 [0.1.4]: https://github.com/gokseloz/paperforge/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/gokseloz/paperforge/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/gokseloz/paperforge/compare/v0.1.1...v0.1.2
