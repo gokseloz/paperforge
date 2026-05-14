@@ -1,5 +1,10 @@
 # paperforge
 
+[![npm version](https://img.shields.io/npm/v/paperforge.svg)](https://www.npmjs.com/package/paperforge)
+[![CI](https://github.com/gokseloz/paperforge/actions/workflows/ci.yml/badge.svg)](https://github.com/gokseloz/paperforge/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![Node.js Version](https://img.shields.io/node/v/paperforge.svg)](https://nodejs.org)
+
 > Compose PDFs from **Handlebars templates**, an optional **JSON recipe**, and your data — with per-template theming. No SaaS, no lock-in, no DSL.
 
 paperforge is a small Node.js library and CLI that turns a folder of templates into a PDF. The interesting bit isn't the HTML-to-PDF step (Puppeteer does that) — it's the **composition model**:
