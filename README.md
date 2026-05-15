@@ -68,6 +68,105 @@ my-template/
 - **With `recipe.json`?** Each listed partial is registered under its name, and a convenience `{{> sections}}` partial renders them all in order. Good for multi-section reports.
 - **Theme** is read from `theme.json` and shallow-merged with any `theme` you pass to `render()` — so you can swap a single color per call without forking the template.
 
+## Building your own template
+
+The examples are starting points — most users will write their own. Here's a minimal "order confirmation" template inside an app:
+
+```
+my-shop/
+├── package.json
+├── pdf-templates/
+│   └── order-confirmation/
+│       ├── main.hbs
+│       └── theme.json
+└── src/
+    └── routes/order.js
+```
+
+`pdf-templates/order-confirmation/main.hbs`:
+
+```handlebars
+<!doctype html>
+<html>
+  <head>
+    <style>
+      body { font-family: sans-serif; padding: 40px; color: #222; }
+      h1 { color: {{theme.brand}}; }
+      table { width: 100%; border-collapse: collapse; }
+      th, td { padding: 8px; border-bottom: 1px solid #eee; }
+      .right { text-align: right; }
+    </style>
+  </head>
+  <body>
+    <h1>Order #{{order.id}}</h1>
+    <p>Hi {{customer.firstName}}, your order from
+       {{formatDate order.createdAt "MMM d, yyyy"}}:</p>
+    <table>
+      <tr><th>Item</th><th>Qty</th><th class="right">Total</th></tr>
+      {{#each order.items}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{qty}}</td>
+          <td class="right">{{currency (mul qty price) "EUR"}}</td>
+        </tr>
+      {{/each}}
+    </table>
+    <p class="right">
+      <strong>Total: {{currency (sum order.items "qty" "price") "EUR"}}</strong>
+    </p>
+  </body>
+</html>
+```
+
+`pdf-templates/order-confirmation/theme.json`:
+
+```json
+{ "brand": "#0066ff" }
+```
+
+`src/routes/order.js`:
+
+```js
+import { render } from "paperforge";
+
+app.get("/orders/:id/pdf", async (req, res) => {
+  const order = await db.order.findById(req.params.id);
+
+  const pdf = await render({
+    templatesDir: "./pdf-templates/order-confirmation",
+    data: { order, customer: order.customer },
+  });
+
+  res.contentType("application/pdf");
+  res.setHeader("Content-Disposition", `attachment; filename="order-${order.id}.pdf"`);
+  res.send(pdf);
+});
+```
+
+That's the full loop: a template folder you own, your data, `render()`, a PDF back. For multi-section documents (cover + summary + body + appendix), add a `recipe.json` and `partials/` — see [`examples/report`](./examples/report).
+
+### Per-tenant / per-brand templates
+
+For multi-tenant SaaS, keep one folder per tenant (or a `default/` fallback) and pick at runtime:
+
+```js
+const dir = fs.existsSync(`./pdf-templates/order/${tenant.slug}`)
+  ? `./pdf-templates/order/${tenant.slug}`
+  : "./pdf-templates/order/default";
+
+const pdf = await render({ templatesDir: dir, data: { order } });
+```
+
+Or keep one template and override the theme per call:
+
+```js
+const pdf = await render({
+  templatesDir: "./pdf-templates/order",
+  data: { order },
+  theme: { brand: tenant.brandColor },
+});
+```
+
 ## CLI
 
 ```text
